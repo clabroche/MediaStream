@@ -1,6 +1,6 @@
 {
   "name": "boilerplate-angular-electron",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "main": "index.js",
   "dependencies": {
     "bower": "^1.8.2"
