@@ -1,6 +1,6 @@
 {
   "name": "boilerplate-angular-electron",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "index.js",
   "dependencies": {
     "@uirouter/angularjs": "^1.0.6",
