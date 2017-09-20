@@ -1,3 +1,5 @@
+![build-status](https://travis-ci.org/clabroche/boilerplate-angular-electron.svg?branch=master)
+
 ## Boiler-plate Angularjs 1
 It's a quick start for make an electron in angular js
 
