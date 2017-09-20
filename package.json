@@ -1,0 +1,21 @@
+{
+  "name": "boilerplate-angular-electron",
+  "version": "0.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "@uirouter/angularjs": "^1.0.6",
+    "angular": "^1.6.6",
+    "angular-ui-router": "^1.0.3"
+  },
+  "scripts": {
+    "electron": "electron .",
+    "postinstall": "bower install",
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=all --out=build",
+    "package-mac": "electron-packager . --icon=public/img/icon.icns --overwrite --platform=darwin --arch=all --out=build",
+    "package-windows": "electron-packager . --icon=public/img/icon.ico --overwrite --platform=win32 --arch=all --out=build"
+  },
+  "devDependencies": {
+    "electron": "^1.7.6",
+    "electron-packager": "^9.1.0"
+  }
+}

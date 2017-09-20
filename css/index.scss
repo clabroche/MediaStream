@@ -1,0 +1,55 @@
+.navbar{
+    color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 100000;
+    margin: 0;
+    height: 100px !important;
+    .logo{
+        padding: 0 !important;
+        width: 120px !important;
+        img{
+            width: 100% !important;
+            height: 100px !important;
+        }
+    }
+}
+.fixNavbar{
+    height: 95px;
+}
+
+.modal{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(0,0,0,0.85);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2em;
+    &>div{
+        width: 100%;
+    }
+    .modalContainer{
+        height: 20vh;
+        text-align: center;
+        line-height: 2em;
+    }
+    .modalHeader {
+        text-align: center;
+        line-height: 2em;
+        border-bottom: 1px solid rgba(255,255,255,0.85)
+    }    
+    .closeModal{
+        width: 3rem;
+        height: 3rem;
+        color: white;
+        position: absolute;
+        right: 15px;
+        margin: 0;
+        top: 30px;
+        font-size: 3rem;
+    }
+}
