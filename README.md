@@ -1,7 +1,7 @@
-![build-status](https://travis-ci.org/clabroche/boilerplate-angular-electron.svg?branch=master)
+![build-status](https://travis-ci.org/clabroche/MediaStream.svg?branch=master)
 
-## Boiler-plate Angularjs 1
-It's a quick start for make an electron in angular js
+## MediaStream
+It's a media center
 
 ### Requirements
  - Wine 1.6 or later needs to be installed on non-Windows platform to build win32 platform. 
@@ -19,3 +19,6 @@ It's a quick start for make an electron in angular js
 2. Make `npm run package-linux .` to make an executable package for linux
 3. Make `npm run package-mac .` to make an executable package for macos
 4. Make `npm run package-windows .` to make an executable package for windows
+
+### TODO
+All !
