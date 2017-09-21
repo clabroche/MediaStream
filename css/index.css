@@ -1,24 +1,22 @@
-.navbar {
-  color: white;
-  position: fixed;
+.sidebar {
+  width: 75px !important;
+}
+
+.sidebar a {
+  color: white !important;
+}
+
+.sidebar a i {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.sidebar img {
   width: 100%;
-  z-index: 100000;
-  margin: 0;
-  height: 100px !important;
 }
 
-.navbar .logo {
-  padding: 0 !important;
-  width: 120px !important;
-}
-
-.navbar .logo img {
-  width: 100% !important;
-  height: 100px !important;
-}
-
-.fixNavbar {
-  height: 95px;
+.globalContainer {
+  margin-left: 75px !important;
 }
 
 .modal {

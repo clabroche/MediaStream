@@ -12,11 +12,6 @@ module.exports = {
       templateUrl: 'views/_modal.html',
       controller: 'NavbarCtrl'
     },
-    'welcome@home': {
-      parent: 'home',
-      templateUrl: 'views/_welcome.html',
-      controller: 'WelcomeController'
-    },
     '': {
       abstract: true,
       templateUrl: 'views/home.html',

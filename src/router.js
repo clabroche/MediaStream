@@ -1,7 +1,7 @@
-const home = require('./routes/home');
+
 function Router ($stateProvider, $urlRouterProvider, $httpProvider) {
   $urlRouterProvider.otherwise('/');
-  $stateProvider.state(home);
+  $stateProvider.state(require('./routes/home'));
 }
 
 module.exports = Router;

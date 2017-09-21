@@ -1,3 +1,14 @@
-<div class="ui menu">
-    <a class="active item logo"><img src="./public/img/logo.png" alt=""></a>
+<div class="ui left visible vertical sidebar labeled icon menu">
+  <a class="item" ui-sref="welcome" ng-click="changeModule('welcome')">
+    <img src="./public/img/logo.png" alt="">
+    Home
+  </a>
+  <a class="item" ui-sref="music" ng-click="changeModule('music')">
+    <i class="fa fa-music"></i>
+    Music
+  </a>
+  <a class="item" ui-sref="picture" ng-click="changeModule('picture')">
+    <i class="fa fa-picture-o" aria-hidden="true"></i>
+    Image
+  </a>
 </div>
