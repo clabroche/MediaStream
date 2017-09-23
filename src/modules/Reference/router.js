@@ -1,11 +1,11 @@
 function Router ($stateProvider, $urlRouterProvider, $httpProvider) {
-  const welcome = Object.create(require('../../routes/globalState.js'));
-  welcome.name = 'welcome';
-  welcome.views['welcome@' + welcome.name] = {
-    parent: welcome.name,
-    templateUrl: 'src/modules/welcome/welcome.html',
-    controller: 'WelcomeController'
+  const {{ModuleName}} = Object.create(require('../../routes/globalState.js'));
+  {{ModuleName}}.name = '{{ModuleName}}';
+  {{ModuleName}}.views['{{ModuleName}}@' + {{ModuleName}}.name] = {
+    parent: {{ModuleName}}.name,
+    templateUrl: 'src/modules/{{ModuleName}}/{{ModuleName}}.html',
+    controller: '{{Controller}}'
   };
-  $stateProvider.state(welcome);
+  $stateProvider.state({{ModuleName}});
 }
 module.exports = Router;

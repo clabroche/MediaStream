@@ -1,8 +1,8 @@
-const WelcomeController = require('./WelcomeController');
+const {{Controller}} = require('./{{Controller}}');
 const config = require('./config');
 
 module.exports.init = function (angular) {
   angular
-    .controller('WelcomeController', WelcomeController)
+    .controller('{{Controller}}', {{Controller}})
     .config(config);
 };
