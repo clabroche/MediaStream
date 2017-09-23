@@ -46,8 +46,10 @@ const launch = async function() {
         );
         return fileContent;
       });
-    fs.writeFileAsync(path.join(modulePath, file), newContent)
+    await fs.writeFileAsync(path.join(modulePath, file), newContent)
   });
+  await fs.appendFileAsync(path.join('src','app.js'), `const ${program.moduleName} = require('${modulePathRelative}${program.moduleName}/app');`)
+  await fs.appendFileAsync(path.join('src','app.js'), `${program.moduleName}.init(ang); \n`)
 };
 
 function replaceAll(str, find, replace) {

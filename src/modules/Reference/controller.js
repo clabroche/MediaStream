@@ -1,4 +1,4 @@
 function {{Controller}} ($scope) {
-  $scope.{{ModuleName}} = 'Hello!';
+  $scope.{{ModuleName}} = 'I\' the module {{ModuleName}} !';
 }
 module.exports = {{Controller}};
