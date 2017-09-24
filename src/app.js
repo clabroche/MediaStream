@@ -22,3 +22,4 @@ const ang = angular
 
 Music.init(ang);
 Welcome.init(ang);
+const picture = require('./src/modules/picture/app');picture.init(ang); 
