@@ -88,7 +88,7 @@ function putInHome(program) {
   );
   const $home = $(".container")
     .append(
-      `    <div ui-view="${program.moduleName}"   class="row" ng-if="$state.current.name == '${program.moduleName}'" ></div>\n`
+      `    <div ui-view="${program.moduleName}"   class="row module" ng-if="$state.current.name == '${program.moduleName}'" ></div>\n`
     )
     .parent().parent();
   fs.writeFileSync(path.resolve("views", "home.html"), $home.html());    

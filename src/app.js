@@ -6,13 +6,13 @@ const HomeController = require('./src/HomeController');
 const NavbarController = require('./src/NavbarController');
 const config = require('./src/config');
 const ang = angular
-  .module('app', ['ui.router'])
-  .service('ModuleService', ModuleService)
-  .service('ConfigService', ConfigService)
-  .controller('HomeCtrl', HomeController)
-  .controller('NavbarCtrl', NavbarController)
+  .module("app", ["ui.router"])
+  .service("ModuleService", ModuleService)
+  .service("ConfigService", ConfigService)
+  .controller("HomeCtrl", HomeController)
+  .controller("NavbarCtrl", NavbarController)
   .config(config)
-.run([
+  .run([
     "$rootScope",
     "$state",
     function($rootScope, $state) {

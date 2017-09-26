@@ -1,1 +1,25 @@
-{{module}}
+<div class="ui grid">
+    <div class="ui vertical menu" id='musicNavbar'>
+        <div class="header item">
+            <i class="user icon"></i><h1>Artists</h1>
+        </div>
+        <a ng-repeat="(artist, value) in artists"> 
+            <h3 ng-click="searchAlbums(artist); open = true">{{artist}}</h3>
+            <div class="menu" ng-if="open">
+                <a class="active item">Search</a>
+                <a class="item">Add</a>
+                <a class="item">Remove</a>
+            </div>
+        </a>
+    </div>
+    <!-- <div class="ui three wide column">
+        <div class="importTrigger">+</div>
+        <div ng-click="find()">Load Artists</div>
+    </div>
+    Artists: 
+    <div>import status: {{status()}}</div>
+    <div class="import">
+        <input type="text" ng-model="importMusicPath">
+        <button class="submit" ng-click="importMusic(importMusicPath)">submit</button>
+    </div> -->
+</div>
