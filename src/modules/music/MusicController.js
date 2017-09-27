@@ -1,20 +1,30 @@
-const Promise = require("bluebird");
-const player = require("./src/player").init();
-const _ = require('lodash')
-function MusicController($scope, $interval, importService, musicDB, $q) {
-  const artists = {};
-  musicDB.find({artist: /\s*\S*/}).then(artists=> {    
-    $scope.$applyAsync(() => {
-      $scope.artists = _.groupBy(artists, "artist")
+function MusicController ($scope, $interval, playerService, importService, musicDB) {
+  $scope.importMusic = function () {
+    const { dialog } = require('electron').remote;
+    const path = dialog.showOpenDialog({
+      properties: ['openDirectory', 'multiSelections']
     });
-  });
-  $scope.searchAlbums = function(artist) {
-    musicDB.find({artist}).then(albums=>{
-      albums = _.groupBy(albums, "album");
-      console.log(albums)
+    importService.import(path).then(_ => {
+      $scope.$apply(_ => {
+        $scope.artists = musicDB.getArtists();
+      });
     });
   };
-  $scope.importMusic = importService.import;
-  $scope.module = "I'm a music Module!";
+  $scope.artists = musicDB.getArtists();
+  $scope.view = 'artists';
+  $scope.navigation = {};
+  $scope.play = playerService.play;
+  $scope.changeView = function (type, args) {
+    if (type === 'albums') {
+      $scope.navigation.artist = args.artist;
+      $scope.albums = musicDB.albums(args.artist);
+      $scope.view = 'albums';
+    }
+    if (type === 'titles') {
+      $scope.navigation.album = args.album;
+      $scope.titles = musicDB.titles($scope.navigation);
+      $scope.view = 'titles';
+    }
+  };
 }
 module.exports = MusicController;

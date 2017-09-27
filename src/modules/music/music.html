@@ -1,25 +1,23 @@
-<div class="ui grid">
+<div class="ui grid" id="musicModule">
     <div class="ui vertical menu" id='musicNavbar'>
-        <div class="header item">
-            <i class="user icon"></i><h1>Artists</h1>
-        </div>
-        <a ng-repeat="(artist, value) in artists"> 
-            <h3 ng-click="searchAlbums(artist); open = true">{{artist}}</h3>
-            <div class="menu" ng-if="open">
-                <a class="active item">Search</a>
-                <a class="item">Add</a>
-                <a class="item">Remove</a>
+        <h1>Library</h1>
+        <a class="item">Artist</a>
+    </div>
+    <div class="" id="musicContainer">
+        <div class="ui grid">
+            <div class="ui item three wide column" ng-repeat="artist in artists | orderBy:'name' track by $index" ng-if="view=='artists'" ng-click="changeView('albums', {artist: artist.name})">
+                <img class="ui three wide column medium image item" src="https://cdn.dribbble.com/users/5912/screenshots/1300524/attachments/181387/io7-isome-icon-P.png">
+                <div class="text">{{artist.name}}</div>
             </div>
-        </a>
+            <div class="ui item three wide column" ng-if="view=='albums'" ng-repeat="(album, value) in albums | orderBy:'name' track by $index" ng-click="changeView('titles', {album: value.name})">
+                <img class="ui three wide column medium image item" src="https://cdn.dribbble.com/users/5912/screenshots/1300524/attachments/181387/io7-isome-icon-P.png">
+                <div class="text">{{value.name}}</div>
+            </div>
+            <div class="ui item three wide column" ng-if="view=='titles'" ng-repeat="title in titles | orderBy:'title' track by $index" ng-click="play(title)">
+                <img class="ui three wide column medium image item" src="https://cdn.dribbble.com/users/5912/screenshots/1300524/attachments/181387/io7-isome-icon-P.png">
+                <div class="text">{{title.title}}</div>
+            </div>
+        </div>
+        <button class="submit floating-button" ng-click="importMusic()"><p class="plus">+</p></button>
     </div>
-    <!-- <div class="ui three wide column">
-        <div class="importTrigger">+</div>
-        <div ng-click="find()">Load Artists</div>
-    </div>
-    Artists: 
-    <div>import status: {{status()}}</div>
-    <div class="import">
-        <input type="text" ng-model="importMusicPath">
-        <button class="submit" ng-click="importMusic(importMusicPath)">submit</button>
-    </div> -->
 </div>

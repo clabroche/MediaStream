@@ -7,11 +7,7 @@
     "cheerio": "^1.0.0-rc.2",
     "commander": "^2.11.0",
     "jsmediatags": "^3.8.0",
-    "lodash": "^4.17.4",
-    "ncp": "^2.0.0",
-    "nedb": "^1.8.0",
-    "pouchdb": "^6.3.4",
-    "sqlite3": "https://github.com/mapbox/node-sqlite3/tarball/master"
+    "lodash": "^4.17.4"
   },
   "scripts": {
     "electron": "electron .",

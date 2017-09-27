@@ -1,5 +1,5 @@
-const router = require('./router.js')
-const config = function config(
+const router = require('./router.js');
+const config = function config (
   $stateProvider,
   $urlRouterProvider,
   $httpProvider
