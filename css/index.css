@@ -19,8 +19,39 @@
   width: 100%;
 }
 
+.infoContainer {
+  position: fixed !important;
+  left: 25%;
+  width: 50%;
+  z-index: 100;
+}
+
+.infoContainer .ui.row.message {
+  overflow: hidden;
+  border-radius: 10px;
+  opacity: 0.5;
+}
+
+.infoContainer .ui.row.message:hover {
+  opacity: 1;
+}
+
+.infoContainer .ui.row.message .close {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+.infoContainer .ui.row.message .text {
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  color: white;
+}
+
 .ui.grid {
   margin: 0;
+  position: relative;
 }
 
 .module {

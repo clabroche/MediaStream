@@ -5,15 +5,32 @@
     </div>
     <div class="" id="musicContainer">
         <div class="ui grid">
-            <div class="ui item three wide column" ng-repeat="artist in artists | orderBy:'name' track by $index" ng-if="view=='artists'" ng-click="changeView('albums', {artist: artist.name})">
+            <div class="infoContainer">
+                <div class="ui row info message" ng-repeat="info in statusInfos track by $index">
+                    <i class="fa fa-times close" aria-hidden="true" ng-click="removeStatus(info.id)"></i>
+                    <div class="text">
+                        {{info.message}}
+                    </div>
+                </div>
+                <div class="ui row error message" ng-repeat="warning in statusWarnings track by $index">
+                    <i class="fa fa-times close" aria-hidden="true" ng-click="removeStatus(warning.id)"></i>
+                    <div class="text">
+                        {{warning.message}}
+                    </div>
+                </div>
+            </div>
+            <div class="ui item three wide column" ng-repeat="artist in artists | orderBy:'name' track by $index" ng-if="view=='artists'"
+                ng-click="changeView('albums', {artist: artist.name})">
                 <img class="ui three wide column medium image item" src="https://cdn.dribbble.com/users/5912/screenshots/1300524/attachments/181387/io7-isome-icon-P.png">
                 <div class="text">{{artist.name}}</div>
             </div>
-            <div class="ui item three wide column" ng-if="view=='albums'" ng-repeat="(album, value) in albums | orderBy:'name' track by $index" ng-click="changeView('titles', {album: value.name})">
+            <div class="ui item three wide column" ng-if="view=='albums'" ng-repeat="(album, value) in albums | orderBy:'name' track by $index"
+                ng-click="changeView('titles', {album: value.name})">
                 <img class="ui three wide column medium image item" src="https://cdn.dribbble.com/users/5912/screenshots/1300524/attachments/181387/io7-isome-icon-P.png">
                 <div class="text">{{value.name}}</div>
             </div>
-            <div class="ui item three wide column" ng-if="view=='titles'" ng-repeat="title in titles | orderBy:'title' track by $index" ng-click="play(title)">
+            <div class="ui item three wide column" ng-if="view=='titles'" ng-repeat="title in titles | orderBy:'title' track by $index"
+                ng-click="play(title)">
                 <img class="ui three wide column medium image item" src="https://cdn.dribbble.com/users/5912/screenshots/1300524/attachments/181387/io7-isome-icon-P.png">
                 <div class="text">{{title.title}}</div>
             </div>

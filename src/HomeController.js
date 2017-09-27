@@ -1,4 +1,5 @@
-function HomeController ($scope, ModuleService) {
+function HomeController ($scope, ModuleService, $state) {
   $scope.activeModule = _ => ModuleService.activeModule;
+  $state.go('music');
 }
 module.exports = HomeController;

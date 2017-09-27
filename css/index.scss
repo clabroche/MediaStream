@@ -14,8 +14,36 @@
         width: 100%;
     }
 }
+.infoContainer{
+  position: fixed !important;
+  left: 25%;
+  width: 50%;
+
+  z-index: 100;
+  .ui.row.message{
+    overflow: hidden; 
+    border-radius: 10px;
+    opacity: 0.5;
+    // position: absolute;
+    &:hover{
+      opacity: 1;
+    }
+    .close{
+      position: absolute;
+      right: 10px;
+      cursor: pointer;
+    }
+    .text{
+      width: 100%;
+      text-align: center;
+      font-size: 1.2rem;
+      color: white;
+    }
+  }
+}
 .ui.grid{
   margin: 0;
+  position: relative;
 }
 .module{
   padding: 0 !important;
