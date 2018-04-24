@@ -1,0 +1,34 @@
+<div class="openSidebar" [ngClass]="{'openSidebar':sidebar._open, 'closeSidebar':!sidebar._open}" id="sidebar">
+
+    <div class="list">
+        <div id="home" class="item" (click)="goToHome();" routerLinkActive="active" (mouseover)="toggleHint($event)" (mouseleave)="toggleHint($event)">
+            <div class="icon">
+                <i class="fa fa-home"></i>
+            </div>
+            <div class="description" [ngClass]="{'openSidebar':sidebar._open, 'closeSidebar':!sidebar._open}">
+                Accueil
+            </div>
+            <div id="hintHome" class="hintContainer" [ngClass]="hintClass">
+                <div class="hint">Accueil</div>
+            </div>
+        </div>
+    </div>
+    <div class="bottomList">
+        <div id="settings" class="item" (click)="goToSettings();" routerLinkActive="active" (mouseover)="toggleHint($event)" (mouseleave)="toggleHint($event)">
+            <div class="icon">
+                <i class="fa fa-cog"></i>
+            </div>
+            <div class="description" [ngClass]="{'openSidebar':sidebar._open, 'closeSidebar':!sidebar._open}">
+                Paramètres
+            </div>
+            <div id="hintSettings" class="hintContainer" [ngClass]="hintClass">
+                <div class="hint">Paramètres</div>
+            </div>
+        </div>
+        <div id="toggleSidebar" class="item" (click)="toggleSidebar();" [ngClass]="{'openSidebar':sidebar._open, 'closeSidebar':!sidebar._open}">
+            <div class="icon" >
+                <i class="fa fa-arrow-right"></i>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+:host{
+  width:100%;
+  #box{
+    width:100%;
+    .box-title{
+      font-size: 1.2rem
+    }
+    .box-container{
+      background-color: #fff;
+      box-shadow: 1px 1px 9px 0px grey;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@import '../common';
+#formGroup{
+    .label{
+        width:100% !important;
+    }
+    
+    & ::ng-deep {
+        .formContainer{
+            margin-bottom:20px;
+        }
+        
+    }
+}

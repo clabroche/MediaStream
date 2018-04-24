@@ -1,0 +1,53 @@
+<div id="navbar">
+  <div id="leftRight">
+    <div id="left">
+      <div id="logoContainer">
+        <div id="logo">
+          <img src="assets/img/logo.png" alt="">
+        </div>
+      </div>
+      <div id="description">
+        Hygisoft Web
+      </div>
+    </div>
+
+    <div id="right">
+      <div id="actions">
+        <div class="icon" *ngIf="auth.me && auth.me.uuid; else logout">
+          <div class="btn-group" dropdown placement="bottom right">
+            <div dropdownToggle>
+              <i class="fa fa-user"></i>
+            </div>
+            <div *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+              <div id="userDropdown" click-stop-propagation>
+                <div class="row noWrap">
+                  <div class="avatar">
+                    <img [src]="auth.me.avatar || 'https://upload.wikimedia.org/wikipedia/commons/5/5f/European_shorthair-PIROK_cat_show_Tampere_2008-10-04.JPG'" alt="">
+                  </div>
+                  <div class="userInfo">
+                    <div>{{auth.me.firstName}} {{auth.me.name}}</div>
+                    <div>{{auth.me.email}}</div>
+                  </div>
+                </div>
+                <div class="row" id="list">
+                  <ul>
+                    <li (click)="goToProfile()" id="goToProfile">
+                      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                      Modification du profil
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ng-template #logout>
+          <div class="icon">
+            <i class="fa fa-sign-in"></i>
+          </div>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
+</div>

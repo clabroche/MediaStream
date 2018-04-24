@@ -1,0 +1,24 @@
+<!-- {{model.errors | json}} -->
+
+<ul *ngIf="model && model.errors">
+    <li *ngIf="model.errors.pattern" class="hint">
+         <ng-container *ngIf="patternName; else notPatternName">
+            {{patternName}}
+        </ng-container>
+        <ng-template #notPatternName>
+            Pattern: {{model.errors.pattern.requiredPattern}}
+        </ng-template>
+    </li>
+    <li *ngIf="model.errors.required" class="hint">
+        Obligatoire
+    </li>
+    <li *ngIf="model.errors.minlength" class="hint">
+        Contient au moins {{model.errors.minlength.requiredLength}} caractères
+    </li>
+    <li *ngIf="model.errors.recheckPassphrase" class="hint">
+        Doit correspondre à la phrase de passe
+    </li>
+    <li *ngIf="model.errors.email" class="hint">
+        Doit être un email
+    </li>
+</ul>

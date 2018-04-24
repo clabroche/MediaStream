@@ -1,0 +1,23 @@
+@import '../../common';
+:host {
+    #tabsPanel{
+        height: 100%;
+    }
+    & ::ng-deep {
+        .nav-tabs{
+            background-color: #f7f7f7;
+            a {
+                color: #495057;
+                padding-bottom:0px;
+            }
+        }
+        .tab-container{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            .tab-content{
+                height: 100%;
+            }
+        }
+    }
+}

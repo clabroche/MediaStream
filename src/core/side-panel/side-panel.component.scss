@@ -1,0 +1,74 @@
+@import '../common';
+
+@keyframes openSidePanel{
+    0% {
+        max-width: 0;
+        padding-left: 0;
+    }
+    100% {
+        padding-left: 10%;
+        max-width: 100vw;
+    }
+}
+@keyframes closeSidePanel{
+    0% {
+        padding-left: 10%;
+        max-width: 100vw; 
+    }
+    100% {
+        padding-left: 0;
+        max-width: 0;        
+    }
+}
+
+:host{
+    height: 100%;
+    #sidePanelClose{
+        i{
+            color: white;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            background-color: #343a40;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        & ::ng-deep  {
+            #sideHeader{
+                background-color: #343a40;
+                color: white;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                padding: 10px;
+            }
+            #sideContainer{
+                padding: 20px;
+            }
+        }
+        position: absolute;
+
+        display: flex;
+        justify-content: flex-end;
+        right: 0;
+        width: 100vw;
+        height: 100%;
+        background-color: rgba(0,0,0,0.7);
+        max-width: 0;
+        overflow-x: hidden;
+        #sidePanelContainer{
+            background-color: #fff;
+            height: 100%;
+        }
+        &.closeSidePanel{
+            animation-name: closeSidePanel;
+            animation-duration: 0.2s;
+            animation-fill-mode: forwards;
+        }
+        &.openSidePanel{
+            animation-name: openSidePanel;
+            animation-duration: 0.2s;
+            animation-fill-mode: forwards;
+        }
+    }
+}

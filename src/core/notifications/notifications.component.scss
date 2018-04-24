@@ -1,0 +1,59 @@
+@import '../common';
+
+
+
+@keyframes openNotif {
+  0% {max-height: 0}
+  to {max-height: 400px;}
+}
+@keyframes closeNotif {
+  0% {max-height: 400px}
+  to {max-height: 0;}
+}
+
+#notifications {
+  z-index: 100000;
+  position: fixed;
+  bottom:20px;
+  right: 20px;
+  display: flex;
+  align-items: flex-end;
+  #closeAll{
+    text-align: right;
+    i{
+      font-size: 1.7em;
+      background-color: $mainColor;
+      color: $mainTextColor;
+      padding: 10px;
+      box-shadow: 0 0 10px grey;    
+    }
+  }
+  .notifWrapper{
+    animation-name: openNotif;
+    animation-duration: 400ms;
+    animation-fill-mode: forwards;
+    overflow-y: hidden;
+    box-shadow: 0 0 10px grey;
+    margin-top:10px;
+    background-color: $mainColor;
+    color: $mainTextColor;
+    &.deleteNotif{
+      animation-name: closeNotif;
+      animation-duration: 400ms;
+      animation-fill-mode: forwards;
+    }
+    .notifContainer{
+      padding: 10px;
+      width:400px;
+      
+      .title{
+        width:100%;
+        border-bottom: 1px solid $mainTextColor;
+      }
+      .msg{
+        width:100%;
+        padding-top:10px;
+      }
+    }
+  }
+}

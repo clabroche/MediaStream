@@ -1,0 +1,7 @@
+<div id="popover" [popover]="popTemplate" [isOpen]="_open" [placement]='placement' triggers='focuson'>
+    <ng-template #popTemplate>
+        <ng-content select="[popover=content]"></ng-content>
+    </ng-template>
+
+    <ng-content></ng-content>
+</div>

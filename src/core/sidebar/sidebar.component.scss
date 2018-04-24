@@ -1,0 +1,136 @@
+@import '../common';
+$sidebarWidth:175px;
+$sidebarWidthClose:$navbarWidth;
+
+
+@keyframes openSidebar {
+  0% {width: $sidebarWidthClose;}
+  to {width: $sidebarWidth;}
+}
+@keyframes closeSidebar {
+  0% {width: $sidebarWidth;}
+  to {width: $sidebarWidthClose;}
+}
+@keyframes openSidebarDescription {
+  0% {width: 0;}
+  to {width:$sidebarWidthClose}
+}
+@keyframes closeSidebarDescription {
+  0% {width:$sidebarWidthClose}
+  to {width:0}
+}
+
+@keyframes openSidebarIcon {
+  0% {transform:scale(1)}
+  to {transform:scale(-1)}
+}
+@keyframes closeSidebarIcon {
+  0% {transform:scale(-1)}
+  to {transform:scale(1)}
+}
+
+@keyframes openHint {
+  0% {max-width:0}
+  to {max-width:200px}
+}
+@keyframes closeHint {
+  0% {max-width:200px}
+  to {max-width:0}
+}
+
+#sidebar {
+  color: $mainTextColor;
+  height: 100%;
+  overflow-x: hidden;
+  width: $sidebarWidthClose;
+  background-color: $mainColor;
+  display: flex;
+  flex-direction: column;
+  background-size: auto 100%;
+  background-image: url(../../assets/img/side.png);
+  &.openSidebar {
+    animation-name: openSidebar;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+  }
+  &.closeSidebar {
+    animation-name: closeSidebar;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+  }
+  .list, .bottomList{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    &.list{height: 100%;}
+    
+    .item {
+      box-shadow: none;
+      justify-content: left;
+      margin: 0;
+      border:none;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding-bottom: 15px;
+      padding-top: 15px;
+      &:hover{
+        background-color: rgba(0,0,0,.5);
+      }
+      .hintContainer{
+        position: absolute;
+        overflow: hidden;
+        left: $sidebarWidthClose;
+        max-width: 0;
+        background-color: darken($mainColor,10);
+        &.openHint{
+          animation-name: openHint;
+          animation-duration: 0.2s;
+          animation-fill-mode: forwards;
+        }
+        &.closeHint{
+          animation-name: closeHint;
+          animation-duration: 0.2s;
+          animation-fill-mode: forwards;
+        }
+        .hint{
+          color: white;
+          padding: 10px;  
+        }
+      }
+      .icon{
+        width:$sidebarWidthClose ;
+        text-align: center;
+        font-size: 1.5em;
+      }
+      .description{
+        &.openSidebar {
+          animation-name: openSidebarDescription;
+          animation-duration: 0.2s;
+          animation-fill-mode: forwards;
+        }
+        &.closeSidebar {
+          animation-name: closeSidebarDescription;
+          animation-duration: 0.2s;
+          animation-fill-mode: forwards;
+        }
+      }
+    }
+    #toggleSidebar{
+      background-color: rgba(0,0,0,.5);
+      .icon {
+        font-size: 1em;
+      }
+      &.openSidebar {
+        animation-name: openSidebarIcon;
+        animation-duration: 0.2s;
+        animation-fill-mode: forwards;
+      }
+      &.closeSidebar {
+        animation-name: closeSidebarIcon;
+        animation-duration: 0.2s;
+        animation-fill-mode: forwards;
+      }
+    }
+  }
+}

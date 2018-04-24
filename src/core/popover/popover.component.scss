@@ -1,0 +1,21 @@
+@import '../../common';
+:host{
+    #popover{
+        display:inline-block;
+        width: 100%;
+    }
+    & ::ng-deep {
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .popover-arrow::after{
+            top: -10px;
+        }
+         .popover-arrow::before{
+            top: -10px;
+        }
+    }
+
+}

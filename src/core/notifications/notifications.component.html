@@ -1,0 +1,17 @@
+<div id="notifications">
+    <div id="closeAll" *ngIf='_notifications.length' (click)="deleteAll()">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+    </div>
+    <div class="notifsWrapper">
+        <div class="notifWrapper" (click)="ns.delete(notif.id)" #notifModel *ngFor="let notif of _notifications" [id]="notif.id">
+            <div class="notifContainer">
+                <div class="title">
+                    {{notif.title}}
+                </div>
+                <div class="msg">
+                    {{notif.msg}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

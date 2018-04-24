@@ -1,0 +1,7 @@
+<div id="sidePanelClose" [ngClass]="{'openSidePanel':sidepanel._open, 'closeSidePanel':!sidepanel._open}" (click)="sidepanel._open=false">
+    <i class='fa fa-chevron-right'></i>
+    <div id="sidePanelContainer" click-stop-propagation>
+        <ng-container *ngTemplateOutlet="sidepanel.template; context: sidepanel.context"></ng-container>
+    </div>
+</div>
+ 
