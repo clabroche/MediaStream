@@ -1,7 +1,7 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const url = require("url");
-
+const fse = require('fs-extra')
 let win;
 
 function createWindow() {
@@ -29,4 +29,11 @@ app.on("activate", () => {
   if (win === null) {
     createWindow();
   }
+});
+
+ipcMain.on("readdir", (event, arg) => {
+  console.log("lkjlkjklj");
+  fse.readdir(arg.path).then(data => {
+    event.sender.send("readdir", data);
+  });
 });

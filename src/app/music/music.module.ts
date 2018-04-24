@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MusicComponent } from './music.component';
 import { Routes, RouterModule } from '@angular/router'
 
-
+import { WalkerService } from "./providers/walker.service";
 const routes: Routes = [
   // {
   //   path: "infos",
@@ -18,6 +18,9 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [MusicComponent]
+  declarations: [MusicComponent],
+  providers:[
+    WalkerService
+  ]
 })
 export class MusicModule { }

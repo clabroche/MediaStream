@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router'
 import { MusicModule } from "./music/music.module";
 import { AppRoutingModule } from '../routing/app-routing.module'
-
+import { NgxElectronModule } from "ngx-electron";
 @NgModule({
   declarations: [
     AppComponent
@@ -14,7 +14,8 @@ import { AppRoutingModule } from '../routing/app-routing.module'
     BrowserModule,
     CoreModule.forRoot(),
     AppRoutingModule,
-    MusicModule
+    MusicModule,
+    NgxElectronModule
   ],
   providers: [],
   bootstrap: [AppComponent]
