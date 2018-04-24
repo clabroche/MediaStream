@@ -1,0 +1,10 @@
+:host{
+    display:flex;
+    flex-direction: column;
+    height: 100vh;
+    .appContainer{
+        display: flex;
+        flex-wrap: nowrap;
+        height: 100%;
+    }
+}

@@ -4,8 +4,6 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Routes, RouterModule } from "@angular/router";
 import { BootstrapModule } from "./bootstrap/bootstrap.module";
-import { NgxDatatableModule } from "@swimlane/ngx-datatable";
-import { AngularOpenlayersModule, SourceVectorComponent } from "ngx-openlayers";
 
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -51,8 +49,6 @@ import { MatchPassword } from './validators/matchPassword.validator'
     BootstrapModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxDatatableModule,
-    AngularOpenlayersModule,
     RouterModule
   ],
   exports: [
@@ -71,8 +67,6 @@ import { MatchPassword } from './validators/matchPassword.validator'
     SpinningIconDirective,
     ValidatorsDirective,
     ReactiveFormsModule,
-    NgxDatatableModule,
-    AngularOpenlayersModule
   ]
 })
 export class CoreModule { 
