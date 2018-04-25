@@ -1,14 +1,15 @@
-import { Injectable, IterableDiffers } from "@angular/core";
+import { Injectable, IterableDiffers, ApplicationRef} from "@angular/core";
 import * as uuid from 'uuid/v4'
 import { Observable, Subject } from "rxjs";
 
 /**
  * Describe a notification
  */
-interface Notification{
-  id: string
-  title: string
-  msg:string
+export interface Notification{
+  id?: string
+  title?: string
+  msg?:string
+  timeout?:any
 }
 /**
  * Control the sidebar outside the component
@@ -31,7 +32,7 @@ export class NotificationsService {
   /**
    * Fetch delay from localStorage 
    */
-  constructor() {
+  constructor(private  appRef: ApplicationRef) {
     let notificationsDelay = +localStorage.getItem('notificationsDelay')
     if (notificationsDelay < 500) {
       notificationsDelay = 6000
@@ -43,19 +44,40 @@ export class NotificationsService {
    * Open sidebar
    */
   add(title, msg) {
-    const notif = {
+    const notif: Notification = {
       id: uuid(),
       title: title || "",
-      msg: msg || ""
+      msg: msg || "",
     }
     this.addEvent.next(notif)
+    notif.timeout = this.defaultTimeout(notif)
     this.notifications.push(notif)
-    setTimeout(() => {
-      this.delete(notif.id)
-    }, +localStorage.getItem('notificationsDelay'));
     return notif
   }
+  
+  defaultTimeout(notif){
+    return setTimeout(() => {
+      this.delete(notif.id)
+    }, +localStorage.getItem('notificationsDelay'));
+  }
 
+  /**
+   * update notification from id 
+   * @param id
+   * @param title
+   * @param content
+   * @param html 
+   */
+  updateNotif(id, _notif: Notification) {
+    this.notifications.map((notif) => {
+      if(notif.id === id) {
+        if (_notif.msg) notif.msg = _notif.msg
+        if (_notif.title) notif.title = _notif.title
+        clearTimeout(notif.timeout)
+        notif.timeout = this.defaultTimeout(notif)
+      }
+    })
+  }
   /**
    * delete a notification
    */

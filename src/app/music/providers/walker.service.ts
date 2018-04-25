@@ -14,9 +14,9 @@ export class WalkerService {
     private applicationRef: ApplicationRef
   ) {}
 
-  readdir(path) {
+  readdir() {
     return new Promise((resolve, reject) => {
-      this.electron.ipcRenderer.send("readdir", { path: "." });
+      this.electron.ipcRenderer.send("readdir");
       this.electron.ipcRenderer.on("readdir", (event, arg) => {
           this.currentFile.next('')
             this.applicationRef.tick();

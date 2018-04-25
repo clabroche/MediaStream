@@ -2,6 +2,9 @@ const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const url = require("url");
 const fse = require('fs-extra')
+const { dialog } = require("electron");
+const Promise = require("bluebird")
+const _  =require('lodash')
 let win;
 
 function createWindow() {
@@ -32,8 +35,31 @@ app.on("activate", () => {
 });
 
 ipcMain.on("readdir", (event, arg) => {
-  console.log("lkjlkjklj");
-  fse.readdir(arg.path).then(data => {
-    event.sender.send("readdir", data);
-  });
+  const result = dialog.showOpenDialog({ properties: ["openDirectory"] });
+  readdirDeep(result.pop(),event).then(data=>{
+    event.sender.send("readdir",data);
+  })
 });
+
+var send = _.debounce(run, 200, {maxWait:201});
+function readdirDeep(_path, event) {
+  return fse
+    .readdir(_path)
+    .then(data => {
+      return Promise.map(data, file => {
+        const pathFile = path.resolve(_path, file);
+        if (fse.lstatSync(pathFile).isDirectory()) {
+          return readdirDeep(pathFile, event);
+        } else {
+          send(event,"readdirProgress",pathFile);
+          
+          return pathFile;
+        }
+      },{concurrency:3});
+    })
+    .then(data => _.flattenDeep(data));
+}
+
+function run(event, channel, message) {
+  event.sender.send(channel, message);
+}

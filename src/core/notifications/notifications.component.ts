@@ -34,11 +34,11 @@ export class NotificationsComponent {
    * @param id 
    * @param html 
    */
-  deleteNotif(id){
+  deleteNotif(id) {
     return new Promise(async (resolve, reject) => {
       const htmlNotif = await this.getHtmlNotif(id)
-      if(!htmlNotif) return
-      this.renderer2.addClass(htmlNotif,"deleteNotif")
+      if (!htmlNotif) return
+      this.renderer2.addClass(htmlNotif, "deleteNotif")
       setTimeout(() => {
         this._notifications = this._notifications.filter(notif => notif.id !== id)
         resolve()

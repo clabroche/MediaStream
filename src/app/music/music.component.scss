@@ -1,0 +1,13 @@
+:host{
+    display: flex;
+    width: 100%;
+    .nav {
+        width:75px;
+        height: 100%;
+        background-color: #1e2848;
+    }
+    .content{
+        height: 100%;        
+        width: 100%;        
+    }
+}
