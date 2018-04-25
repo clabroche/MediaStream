@@ -3,12 +3,14 @@
 $fa-font-path: "~font-awesome/fonts";
 @import "~bootstrap/scss/bootstrap";
 @import "~font-awesome/scss/font-awesome";
+@import "assets/font/fontello/css/fontello.css";
 
 body, html{
     margin: 0;
     height: 100vh;
     overflow: hidden;
-    background-color: #171717
+    background-color: #313038;
+    color: white;
 }
 *:focus{
     outline: none

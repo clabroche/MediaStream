@@ -4,7 +4,22 @@
     .nav {
         width:75px;
         height: 100%;
-        background-color: #1e2848;
+        background-color: #1b1b1b;
+        ul{
+            width:100%;
+            li{
+                &:hover{
+                    background-color:rgba(255,255,255,0.5)
+                }
+                cursor:pointer;
+                padding:10px;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        }
     }
     .content{
         height: 100%;        

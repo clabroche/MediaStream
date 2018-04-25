@@ -1,6 +1,21 @@
 <div class="nav">
-    
+    <ul>
+        <li (click)="goTo('artists')">
+            <i class='icon-user'></i>
+            <div>Artist</div>
+        </li>    
+        <li (click)="goTo('albums')">
+            <i class='icon-cd'></i>
+            <div>Album</div>
+        </li>
+        <li (click)="goTo('titles')">
+            <i class='icon-music-1'></i>
+            <div>Title</div>
+        </li>    
+    </ul>
 </div>
 <div class="content">
-    
+    <router-outlet name="artists"></router-outlet>
+    <router-outlet name="albums"></router-outlet>
+    <router-outlet name="titles"></router-outlet>
 </div>

@@ -1,0 +1,70 @@
+{
+  "name": "fontello",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "16f88519423df34fc5c48be7ded81b8f",
+      "css": "cd",
+      "code": 59392,
+      "src": "entypo"
+    },
+    {
+      "uid": "991360fdaaad39ce2e91cae81cdc244c",
+      "css": "cd-1",
+      "code": 59393,
+      "src": "iconic"
+    },
+    {
+      "uid": "80fm9zvbe9habbzvsy6w4aymkgz2vu9i",
+      "css": "cd-2",
+      "code": 59394,
+      "src": "modernpics"
+    },
+    {
+      "uid": "52cde78d270e411ccf22c9ec02910d69",
+      "css": "cd-3",
+      "code": 59395,
+      "src": "linecons"
+    },
+    {
+      "uid": "5rarhtgcreeh8evuaqd8zoekgehkt3mm",
+      "css": "music",
+      "code": 59396,
+      "src": "typicons"
+    },
+    {
+      "uid": "9ea0a737ccc45d6c510dcbae56058849",
+      "css": "music-1",
+      "code": 59398,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "fda731b5a4026685e1a9c7e64228e2b2",
+      "css": "music-3",
+      "code": 59397,
+      "src": "entypo"
+    },
+    {
+      "uid": "f2a036a85c0a6a46b0c9709a70e1bb70",
+      "css": "music-2",
+      "code": 59399,
+      "src": "entypo"
+    },
+    {
+      "uid": "31972e4e9d080eaa796290349ae6c1fd",
+      "css": "users",
+      "code": 59401,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "8b80d36d4ef43889db10bc1f0dc9a862",
+      "css": "user",
+      "code": 59402,
+      "src": "fontawesome"
+    }
+  ]
+}
