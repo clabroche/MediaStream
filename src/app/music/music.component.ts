@@ -6,6 +6,8 @@ import { ArtistsComponent } from "./artists/artists.component";
 import { AlbumsComponent } from "./albums/albums.component";
 import { TitlesComponent } from "./titles/titles.component";
 import { NotificationsService, Notification} from '../../core/providers/notifications.service';
+import * as path from "path";
+import * as fs from 'fs'
 @Component({
   selector: "app-music",
   templateUrl: "./music.component.html",
@@ -20,7 +22,9 @@ export class MusicComponent implements OnInit {
   ) {}
 
   
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(fs.readdirSync('/'))
+  }
   
   urls = {
     artist: ArtistComponent.outlet,
@@ -51,6 +55,7 @@ export class MusicComponent implements OnInit {
         });
     });
     this.walker.readdir().then(data => {
+      console.log(data)
       sub.unsubscribe();
     });
   }

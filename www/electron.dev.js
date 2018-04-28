@@ -36,6 +36,7 @@ app.on("activate", () => {
 
 ipcMain.on("readdir", (event, arg) => {
   const result = dialog.showOpenDialog({ properties: ["openDirectory"] });
+  console.log(result)
   readdirDeep(result.pop(),event).then(data=>{
     event.sender.send("readdir",data);
   })

@@ -16,10 +16,11 @@ export class WalkerService {
 
   readdir() {
     return new Promise((resolve, reject) => {
-      this.electron.ipcRenderer.send("readdir");
+      this.electron.ipcRenderer.send("readdir", {ext:".mp3"});
       this.electron.ipcRenderer.on("readdir", (event, arg) => {
           this.currentFile.next('')
-            this.applicationRef.tick();
+          this.applicationRef.tick();
+          resolve(arg)
       });
       this.electron.ipcRenderer.on("readdirProgress", (event, arg) => {
         this.currentFile.next(arg);
