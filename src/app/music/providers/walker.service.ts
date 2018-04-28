@@ -1,7 +1,25 @@
 import { Injectable, ApplicationRef } from "@angular/core";
 import { ElectronService } from "ngx-electron";
+import { NotificationsService } from "../../../core/providers/notifications.service";
+
 import { Subject } from 'rxjs';
+import * as fs from 'fs-extra';
+import * as jsmediatags from 'jsmediatags';
 import * as _ from "lodash";
+import * as path from "path";
+import * as bluebird from "bluebird";
+import * as db from "electron-db";
+import * as low from "lowdb"
+import * as FileSync from "lowdb/adapters/FileSync"
+
+const adapter = new FileSync("db.json");
+const db = low(adapter);
+
+// Set some defaults
+db.defaults({ musics: [], user: {} }).write();
+const electron = require("electron");
+
+const { ipcRenderer } = electron;
 
 /**
  * 
@@ -9,23 +27,47 @@ import * as _ from "lodash";
 @Injectable()
 export class WalkerService {
   currentFile = new Subject();
+  notif
   constructor(
     private electron: ElectronService,
-    private applicationRef: ApplicationRef
+    private applicationRef: ApplicationRef,
+    private notifs: NotificationsService
   ) {}
 
-  readdir() {
-    return new Promise((resolve, reject) => {
-      this.electron.ipcRenderer.send("readdir", {ext:".mp3"});
-      this.electron.ipcRenderer.on("readdir", (event, arg) => {
-          this.currentFile.next('')
-          this.applicationRef.tick();
-          resolve(arg)
-      });
-      this.electron.ipcRenderer.on("readdirProgress", (event, arg) => {
-        this.currentFile.next(arg);
-        this.applicationRef.tick()
-      });
-    });
+  async readdir() {
+    const result = ipcRenderer.sendSync(('open-dir-dialog'))
+    return this.readdirDeep(result.pop(), event, ".mp3")
+      .then(data => _.flattenDeep(data))
+      .then(data => data.filter(data => data !== undefined))
   }
+  readdirDeep(_path, event, ext) {
+    return fs
+      .readdir(_path)
+      .then(data => {
+        return bluebird.map(data,async file => {
+            const pathFile = path.resolve(_path, file);
+            if (fs.lstatSync(pathFile).isDirectory()) {
+              return await this.readdirDeep(pathFile, event, ext);
+            } else if (path.extname(pathFile) === ext) {
+              return new Promise((resolve, reject) => {
+                jsmediatags.read(pathFile, { onSuccess: function(tag) {
+                    var tags = tag.tags;
+                    const tagsToDelete = ["picture", "APIC", "IPLS", "PRIV", "TCOM", "TENC", "TPE3", "TYER", "USLT", "COMM", "RVA2", "TALB", "TCON", "TDAT", "TIT2", "TMED", "TORY", "TPE1", "TPE2", "TPOS", "TPUB", "TRCK", "TSO2", "TSOP", "TSRC", "TXXX", "ER", "UFID"];
+                    tagsToDelete.map(tagToDelete => delete tags[tagToDelete]);
+                    tags.path = pathFile;
+                    resolve(tags)
+                  }, onError: _ => resolve({ path: pathFile }) });
+              }).then((data:any)=>{
+                if(!this.notif) this.notif = this.notifs.add("Explore", data.path);
+                else this.notifs.updateNotif(this.notif, {msg:data.message})
+                db.get('musics').push(data).write()
+                return data
+              }); 
+            }
+          },
+          { concurrency: 3 }
+        )
+      })
+  }
+
 }

@@ -7,7 +7,7 @@ import { AlbumsComponent } from "./albums/albums.component";
 import { TitlesComponent } from "./titles/titles.component";
 import { NotificationsService, Notification} from '../../core/providers/notifications.service';
 import * as path from "path";
-import * as fs from 'fs'
+import * as fs from 'fs-extra'
 @Component({
   selector: "app-music",
   templateUrl: "./music.component.html",
