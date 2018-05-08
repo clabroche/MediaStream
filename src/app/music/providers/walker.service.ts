@@ -1,6 +1,7 @@
 import { Injectable, ApplicationRef } from "@angular/core";
 import { ElectronService } from "ngx-electron";
 import { NotificationsService } from "../../../core/providers/notifications.service";
+import { DBService } from "../providers/db.service";
 
 import { Subject } from 'rxjs';
 import * as fs from 'fs-extra';
@@ -9,14 +10,8 @@ import * as _ from "lodash";
 import * as path from "path";
 import * as bluebird from "bluebird";
 import * as db from "electron-db";
-import * as low from "lowdb"
-import * as FileSync from "lowdb/adapters/FileSync"
-
-const adapter = new FileSync("db.json");
-const db = low(adapter);
 
 // Set some defaults
-db.defaults({ musics: [], user: {} }).write();
 const electron = require("electron");
 
 const { ipcRenderer } = electron;
@@ -31,7 +26,8 @@ export class WalkerService {
   constructor(
     private electron: ElectronService,
     private applicationRef: ApplicationRef,
-    private notifs: NotificationsService
+    private notifs: NotificationsService,
+    private dbService: DBService
   ) {}
 
   async readdir() {
@@ -60,7 +56,8 @@ export class WalkerService {
               }).then((data:any)=>{
                 if(!this.notif) this.notif = this.notifs.add("Explore", data.path);
                 else this.notifs.updateNotif(this.notif, {msg:data.message})
-                db.get('musics').push(data).write()
+
+                this.dbService.musics().import(data)
                 return data
               }); 
             }

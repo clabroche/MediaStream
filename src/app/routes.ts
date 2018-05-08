@@ -8,7 +8,6 @@ export const profile = 'app/profilePage/profilePage.module#ProfilePageModule'
 export const HomeRoutes: Routes = [
     { 
         path: "music", 
-        component: MusicComponent, 
         loadChildren: "app/music/music.module#MusicModule" 
     }
 ]

@@ -6,22 +6,25 @@
             <i class='fa fa-refresh'></i>
             <div>Import</div>
         </li>
-        <li (click)="goTo('artists')">
+        <li routerLink="/music/artists">
             <i class='icon-user'></i>
             <div>Artist</div>
         </li>
-        <li (click)="goTo('albums')">
+        <li routerLink="/music/albums">
             <i class='icon-cd'></i>
-            <div>Album</div>
+            <div>Albums</div>
         </li>
-        <li (click)="goTo('titles')">
+        <li routerLink="/music/titles">
             <i class='icon-music-1'></i>
-            <div>Title</div>
+            <div>Titles</div>
         </li>    
     </ul>
 </div>
-<div class="content">
-    <router-outlet name="artists"></router-outlet>
-    <router-outlet name="albums"></router-outlet>
-    <router-outlet name="titles"></router-outlet>
+<div class="column">
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+    <div>
+        <player></player>
+    </div>
 </div>

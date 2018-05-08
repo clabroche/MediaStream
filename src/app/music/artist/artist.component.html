@@ -1,3 +1,33 @@
-<p>
-  artist works!
-</p>
+<div class="artistHeader">
+  <img [src]="artist.cover || 'assets/img/user-icon.png'" alt="">
+  <div class="description">
+    <div class="left">
+      Artist
+      <h1>{{artist.name}}</h1>
+    </div>
+  </div>
+</div>
+<div *ngFor='let album of artist.albums | toArray' class="album">
+  <div class=albumHeader>
+    <div class="cover">
+      <img [src]="artist.cover || 'assets/img/user-icon.png'" alt="">
+    </div>
+    <div class="description">
+      <div class="date">{{album.date || 'unknown'}}</div>
+      <h2 class="album-name">{{album.name || 'unknown'}}</h2>
+    </div>
+  </div>
+  <div class="titles">
+  <table>
+    <tr>
+      <th>N°</th>
+      <th>Title</th>
+    </tr>
+    <tr *ngFor='let title of album.titles | toArray; let i = index'>
+      <td>{{i}}</td>
+      <td>{{title.title}}</td>
+    </tr>
+  </table>
+  </div>
+  
+</div>

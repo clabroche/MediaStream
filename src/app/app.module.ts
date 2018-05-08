@@ -8,7 +8,7 @@ import { AppRoutingModule } from '../routing/app-routing.module'
 import { NgxElectronModule } from "ngx-electron";
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

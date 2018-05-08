@@ -1,0 +1,18 @@
+:host{
+    .artistContainer{
+        width: 12.5%;
+        display: inline-block;
+        padding: 10px;
+        img{
+            width:100%;
+            filter: grayscale(100%)
+        }
+        .infos{
+            padding: 10px;
+            text-align: center;
+            .second{
+                color:rgba(255,255,255,0.5)
+            }
+        }
+    }
+}

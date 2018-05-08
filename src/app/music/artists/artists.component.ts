@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DBService } from '../providers/db.service';
+import { Router } from '@angular/router';
+import { CommonService } from '../../../core/providers/common.service';
+import { MusicComponent } from '../music.component';
 
 @Component({
   selector: "app-artists",
@@ -6,16 +10,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ["./artists.component.scss"]
 })
 export class ArtistsComponent implements OnInit {
-  static url = [
-    {
-      path: "artists",
-      component: ArtistsComponent,
-      outlet: "artists"
-    }
-  ];
-  static outlet = ["/music", { outlets: { 'artists': "artists" } }];
-  constructor() {}
+  artists =[]
+  constructor(private db: DBService, public router: Router, private common: CommonService) {}
 
   ngOnInit() {
+    this.artists = this.db.musics().artists()
   }
 }

@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 import * as _ from 'lodash'
+import { Router } from "@angular/router";
+import { getCurrentDebugContext } from "@angular/core/src/view/services";
 
 /**
  * Describe differences between two object
@@ -37,13 +39,17 @@ export class CommonService {
    */
   refreshTokenInterval: number
 
+  routeData
+
   /**
    * Instanciate all members
    */
-  constructor(){
+  constructor(private router: Router){
     this.api = "http://localhost:3000"
     this.graphQL = this.api + '/graphql'
     this.refreshTokenInterval = 4000
+    this.routeData = localStorage.getItem('routeData')
+    
   }
 
   /**

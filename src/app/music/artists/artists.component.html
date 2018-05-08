@@ -1,3 +1,15 @@
-<p>
-  artists works!
-</p>
+<div class="artistsContainer">
+  <div *ngFor="let artist of artists" class="artistContainer" [routerLink]="['/music/artist', artist.name]">
+    <div class='cover'>
+      <img src="assets/img/user-icon.png" alt="">
+    </div>
+    <div class="infos">
+      <div class="main">
+        {{artist.name}}
+      </div>
+      <div class="second">
+        {{artist.nbAlbums}} albums
+      </div>
+    </div>
+  </div>
+</div>
